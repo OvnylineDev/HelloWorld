@@ -62,16 +62,36 @@
                alert(device.uuid);
           }
 
+          /*
+          {
+               quality : 75,
+               destinationType : Camera.DestinationType.DATA_URL,
+               sourceType : Camera.PictureSourceType.CAMERA,
+               allowEdit : true,
+               encodingType: Camera.EncodingType.JPEG,
+               targetWidth: 100,
+               targetHeight: 100,
+               popoverOptions: CameraPopoverOptions,
+               saveToPhotoAlbum: false
+          };
+
+           */
           function openCamera(){
                navigator.camera.getPicture( onSuccess, onFail, {
                     quality: 50,
-                    destinationType: Camera.DestinationType.DATA_URL
+                    destinationType : Camera.DestinationType.DATA_URL,
+                    sourceType : Camera.PictureSourceType.CAMERA,
+                    allowEdit : true,
+                    encodingType: Camera.EncodingType.JPEG,
+                    mediaType: Camera.MediaType.PICTURE,
+                    saveToPhotoAlbum: true
                });
           }
 
           function onSuccess(imageData) {
-               var image = document.getElementById('myImage');
+               var image = document.getElementById('largeImage');
                image.src = "data:image/jpeg;base64," + imageData;
+
           }
 
           function onFail(message) {
@@ -89,8 +109,8 @@
         </div>
         <p id="deviceProperties">Loading device properties...</p>
         <div>
-             <button id="camara" class="" onclick="openCamera()">Acceder</button>
-             <img id="myImage" src="" />
+             <button id="camara" class="" onclick="openCamera()">Cámara</button>
+             <img style="display:block;" id="largeImage" src="./img/logo.png" />
         </div>
     </div>
 </body>
