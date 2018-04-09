@@ -81,7 +81,6 @@
                     quality: 50,
                     destinationType : Camera.DestinationType.DATA_URL,
                     sourceType : Camera.PictureSourceType.CAMERA,
-                    allowEdit : true,
                     encodingType: Camera.EncodingType.JPEG,
                     mediaType: Camera.MediaType.PICTURE,
                     saveToPhotoAlbum: true
@@ -91,6 +90,8 @@
           function onSuccess(imageData) {
                var image = document.getElementById('largeImage');
                image.src = "data:image/jpeg;base64," + imageData;
+               var element = document.getElementById('imageData');
+               element.innerHTML = imageData;
 
           }
 
@@ -111,6 +112,7 @@
         <div>
              <button id="camara" class="" onclick="openCamera()">Cámara</button>
              <img style="display:block;" id="largeImage" src="./img/logo.png" />
+             <p id="imageData">Loading device properties...</p>
         </div>
     </div>
 </body>
