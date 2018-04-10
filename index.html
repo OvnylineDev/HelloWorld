@@ -125,7 +125,7 @@
           function onSuccess(imageUri) {
                var image = $('#largeImage');
                // image.src = uriToData(imageUri);
-               image.attr('src', imageUri);
+               image.attr('src', 'data:image/jpg;base64,' + imageUri);
                image.css({maxWidth: '100px', width: 'auto', height: 'auto'});
                // image.on('load', function() {
                //      // alert("pasa 0");
