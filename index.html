@@ -88,6 +88,28 @@
                });
           }
 
+          function openLibrary(){
+               navigator.camera.getPicture( onSuccess, onFail, {
+                    quality: 50,
+                    destinationType : Camera.DestinationType.FILE_URI,
+                    sourceType : Camera.PictureSourceType.PHOTOLIBRARY,
+                    encodingType: Camera.EncodingType.JPEG,
+                    mediaType: Camera.MediaType.PICTURE,
+                    saveToPhotoAlbum: true
+               });
+          }
+
+          function openSavePh(){
+               navigator.camera.getPicture( onSuccess, onFail, {
+                    quality: 50,
+                    destinationType : Camera.DestinationType.FILE_URI,
+                    sourceType : Camera.PictureSourceType.SAVEDPHOTOALBUM,
+                    encodingType: Camera.EncodingType.JPEG,
+                    mediaType: Camera.MediaType.PICTURE,
+                    saveToPhotoAlbum: true
+               });
+          }
+
           // function onSuccess(imageData) {
           //      var image = document.getElementById('largeImage');
           //      image.src = "data:image/jpeg;base64," + imageData;
@@ -99,7 +121,7 @@
                var image = $('#largeImage');
                // image.src = uriToData(imageUri);
                image.attr('src', imageUri);
-               // $img.css({position: 'absolute', left: '0px', top: '-999999em', maxWidth: 'none', width: 'auto', height: 'auto'});
+               image.css({position: 'absolute', left: '0px', top: '-999999em', maxWidth: 'none', width: 'auto', height: 'auto'});
                image.bind('load', function() {
                     var canvas = document.createElement("canvas");
                     canvas.width = image.width();
@@ -108,9 +130,14 @@
                     ctx.drawImage($img[0], 0, 0);
                     var dataUri = canvas.toDataURL('image/png');
                     image.attr('src', 'data:image/png;base64,' + imageDataUri);
+                    alert(image.attr('src'))
                });
                image.bind('error', function() {
                     console.log('Couldnt convert photo to data URI');
+               });
+
+               image.click(function(event) {
+                    image.attr('src', '');
                });
           }
 
@@ -130,8 +157,9 @@
         <p id="deviceProperties">Loading device properties...</p>
         <div>
              <button id="camara" class="" onclick="openCamera()">Cámara</button>
+             <button id="camara" class="" onclick="openLibrary()">Cámara</button>
+             <button id="camara" class="" onclick="openSavePh()">Cámara</button>
              <img style="display:block;" id="largeImage" src="./img/logo.png" />
-             <p id="imageData">Loading device properties...</p>
         </div>
     </div>
 </body>
