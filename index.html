@@ -80,7 +80,7 @@
           function openCamera(){
                navigator.camera.getPicture( onSuccess, onFail, {
                     quality: 50,
-                    destinationType : Camera.DestinationType.FILE_URI,
+                    destinationType : Camera.DestinationType.NATIVE_URI,
                     sourceType : Camera.PictureSourceType.CAMERA,
                     encodingType: Camera.EncodingType.JPEG,
                     mediaType: Camera.MediaType.PICTURE,
@@ -91,7 +91,7 @@
           function openLibrary(){
                navigator.camera.getPicture( onSuccess, onFail, {
                     quality: 50,
-                    destinationType : Camera.DestinationType.FILE_URI,
+                    destinationType : Camera.DestinationType.NATIVE_URI,
                     sourceType : Camera.PictureSourceType.PHOTOLIBRARY,
                     encodingType: Camera.EncodingType.JPEG,
                     mediaType: Camera.MediaType.PICTURE,
@@ -102,7 +102,7 @@
           function openSavePh(){
                navigator.camera.getPicture( onSuccess, onFail, {
                     quality: 50,
-                    destinationType : Camera.DestinationType.FILE_URI,
+                    destinationType : Camera.DestinationType.NATIVE_URI,
                     sourceType : Camera.PictureSourceType.SAVEDPHOTOALBUM,
                     encodingType: Camera.EncodingType.JPEG,
                     mediaType: Camera.MediaType.PICTURE,
@@ -126,24 +126,23 @@
                var image = $('#largeImage');
                // image.src = uriToData(imageUri);
                image.attr('src', imageUri);
-               alert(imageUri);
                image.css({maxWidth: '100px', width: 'auto', height: 'auto'});
                image.on('load', function() {
-                    // alert("pasa 0");
+                    alert("pasa 0");
                     var canvas = document.createElement("canvas");
-                    // alert("pasa 1");
+                    alert("pasa 1");
                     canvas.width = image.width();
-                    // alert("pasa 2");
+                    alert("pasa 2");
                     canvas.height = image.height();
-                    // alert("pasa 3");
+                    alert("pasa 3");
                     var ctx = canvas.getContext('2d');
-                    // alert("pasa 4");
+                    alert("pasa 4");
                     ctx.drawImage(this, 0, 0);
-                    // alert("pasa 5");
-                    var dataUri = canvas.toDataURL('image/jpg');
-                    // alert("pasa 6");
+                    alert("pasa 5");
+                    var dataUri = canvas.toDataURL('image/png');
+                    alert("pasa 6");
                     image.attr('src', dataUri);
-                    // alert("pasa 7 F");
+                    alert("pasa 7 F");
                });
                image.on('error', function() {
                     console.log('Couldnt convert photo to data URI');
