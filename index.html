@@ -80,7 +80,7 @@
           function openCamera(){
                navigator.camera.getPicture( onSuccess, onFail, {
                     quality: 50,
-                    destinationType : Camera.DestinationType.NATIVE_URI,
+                    destinationType : Camera.DestinationType.DATA_URL,
                     sourceType : Camera.PictureSourceType.CAMERA,
                     encodingType: Camera.EncodingType.JPEG,
                     mediaType: Camera.MediaType.PICTURE,
@@ -91,7 +91,7 @@
           function openLibrary(){
                navigator.camera.getPicture( onSuccess, onFail, {
                     quality: 50,
-                    destinationType : Camera.DestinationType.NATIVE_URI,
+                    destinationType : Camera.DestinationType.DATA_URL,
                     sourceType : Camera.PictureSourceType.PHOTOLIBRARY,
                     encodingType: Camera.EncodingType.JPEG,
                     mediaType: Camera.MediaType.PICTURE,
@@ -102,7 +102,7 @@
           function openSavePh(){
                navigator.camera.getPicture( onSuccess, onFail, {
                     quality: 50,
-                    destinationType : Camera.DestinationType.NATIVE_URI,
+                    destinationType : Camera.DestinationType.DATA_URL,
                     sourceType : Camera.PictureSourceType.SAVEDPHOTOALBUM,
                     encodingType: Camera.EncodingType.JPEG,
                     mediaType: Camera.MediaType.PICTURE,
@@ -126,12 +126,10 @@
           //      element.innerHTML = imageData;
           // }
           //
-          function onSuccess(imageUri) {
-               var image = $('#largeImage');
-               // image.src = uriToData(imageUri);
-               image.attr('src', imageUri);
-               image.css({maxWidth: '100px', width: 'auto', height: 'auto'});
-               image.on('load', function() {
+          function onSuccess(imageData) {
+               var image = new Image();
+
+               image.onload(function() {
                     var canvas = document.getElementById("canvas");
                     var ctx = canvas.getContext('2d');
                     canvas.width = image.width();
@@ -140,9 +138,8 @@
                     var dataUri = canvas.toDataURL('image/jpeg');
                     // $("#img2").attr('src', dataUri);
                });
-               image.on('error', function() {
-                    console.log('Couldnt convert photo to data URI');
-               });
+
+               image.src = imageData;
 
                image.click(function(event) {
                     image.attr('src', '');
@@ -169,7 +166,7 @@
              <button id="save" class="" onclick="openSavePh()">Saved</button>
              <button id="info" class="" onclick="info()">Info</button>
              <button id="info2" class="" onclick="info2()">Info2</button>
-             <img style="display:block;" id="largeImage" src="./img/logo.png" />
+             <!-- <img style="display:block;" id="largeImage" src="./img/logo.png" /> -->
              <canvas id="canvas"></canvas>
         </div>
     </div>
