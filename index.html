@@ -43,6 +43,7 @@
 
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript">
           // app.initialize();
           // Wait for device API libraries to load
@@ -52,14 +53,14 @@
           // device APIs are available
           //
           function onDeviceReady() {
-             var element = document.getElementById('deviceProperties');
-             element.innerHTML = 'Device Model: '    + device.model    + '<br />' +
+             var element = $('deviceProperties');
+             element.html('Device Model: '    + device.model    + '<br />' +
                                  'Device Cordova: '  + device.cordova  + '<br />' +
                                  'Device Platform: ' + device.platform + '<br />' +
                                  'Device UUID: '     + device.uuid     + '<br />' +
-                                 'Device Version: '  + device.version  + '<br />';
+                                 'Device Version: '  + device.version  + '<br />');
 
-               alert(device.uuid);
+               // alert(device.uuid);
           }
 
           /*
@@ -79,7 +80,7 @@
           function openCamera(){
                navigator.camera.getPicture( onSuccess, onFail, {
                     quality: 50,
-                    destinationType : Camera.DestinationType.DATA_URL,
+                    destinationType : Camera.DestinationType.FILE_URI,
                     sourceType : Camera.PictureSourceType.CAMERA,
                     encodingType: Camera.EncodingType.JPEG,
                     mediaType: Camera.MediaType.PICTURE,
@@ -87,12 +88,30 @@
                });
           }
 
-          function onSuccess(imageData) {
-               var image = document.getElementById('largeImage');
-               image.src = "data:image/jpeg;base64," + imageData;
-               var element = document.getElementById('imageData');
-               element.innerHTML = imageData;
-
+          // function onSuccess(imageData) {
+          //      var image = document.getElementById('largeImage');
+          //      image.src = "data:image/jpeg;base64," + imageData;
+          //      var element = document.getElementById('imageData');
+          //      element.innerHTML = imageData;
+          // }
+          //
+          function onSuccess(imageUri) {
+               var image = $('largeImage');
+               // image.src = uriToData(imageUri);
+               image.attr('src', imageUri);
+               // $img.css({position: 'absolute', left: '0px', top: '-999999em', maxWidth: 'none', width: 'auto', height: 'auto'});
+               image.bind('load', function() {
+                    var canvas = document.createElement("canvas");
+                    canvas.width = image.width();
+                    canvas.height = image.height();
+                    var ctx = canvas.getContext('2d');
+                    ctx.drawImage($img[0], 0, 0);
+                    var dataUri = canvas.toDataURL('image/png');
+                    image.attr('src', 'data:image/png;base64,' + imageDataUri);
+               });
+               image.bind('error', function() {
+                    console.log('Couldnt convert photo to data URI');
+               });
           }
 
           function onFail(message) {
