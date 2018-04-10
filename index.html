@@ -125,7 +125,7 @@
           function onSuccess(imageData) {
                var image = new Image();
 
-               image.on('load', function() {
+               image.onload = function() {
                     alert("entra");
                     var canvas = document.getElementById("canvas");
                     var ctx = canvas.getContext('2d');
