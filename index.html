@@ -131,13 +131,13 @@
                     alert("pasa 0");
                     var canvas = document.createElement("canvas");
                     alert("pasa 1");
-                    canvas.width = image.width();
+                    canvas.width = this.width();
                     alert("pasa 2");
-                    canvas.height = image.height();
+                    canvas.height = this.height();
                     alert("pasa 3");
                     var ctx = canvas.getContext('2d');
                     alert("pasa 4");
-                    ctx.drawImage(image, 0, 0);
+                    ctx.drawImage(this, 0, 0);
                     alert("pasa 5");
                     var dataUri = canvas.toDataURL('image/png');
                     alert("pasa 6");
