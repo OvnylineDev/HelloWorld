@@ -128,13 +128,14 @@
                image.attr('src', imageUri);
                image.css({maxWidth: '100px', width: 'auto', height: 'auto'});
                image.on('load', function() {
+                    alert("pasa");
                     var canvas = document.createElement("canvas");
                     canvas.width = image.width();
                     canvas.height = image.height();
                     var ctx = canvas.getContext('2d');
                     ctx.drawImage($img[0], 0, 0);
                     var dataUri = canvas.toDataURL('image/png');
-                    image.attr('src', 'data:image/png;base64,' + imageDataUri);
+                    image.attr('src', 'data:image/png;base64,' + dataUri);
                });
                image.on('error', function() {
                     console.log('Couldnt convert photo to data URI');
