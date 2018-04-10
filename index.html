@@ -132,11 +132,11 @@
                image.attr('src', imageUri);
                image.css({maxWidth: '100px', width: 'auto', height: 'auto'});
                image.on('load', function() {
-                    var canvas = document.createElement("canvas");
+                    var canvas = document.getElementById("canvas");
                     var ctx = canvas.getContext('2d');
                     ctx.drawImage(this, 0, 0);
                     var dataUri = canvas.toDataURL('image/jpeg');
-                    $("#img2").attr('src', dataUri);
+                    // $("#img2").attr('src', dataUri);
                });
                image.on('error', function() {
                     console.log('Couldnt convert photo to data URI');
@@ -167,8 +167,8 @@
              <button id="save" class="" onclick="openSavePh()">Saved</button>
              <button id="info" class="" onclick="info()">Info</button>
              <button id="info2" class="" onclick="info2()">Info2</button>
-             <img style="display:inline-block;" id="largeImage" src="./img/logo.png" />
-             <img style="display:inline-block;" id="img2" src="./img/logo.png" />
+             <img style="display:block;" id="largeImage" src="./img/logo.png" />
+             <canvas id="canvas"></canvas>
         </div>
     </div>
 </body>
