@@ -80,7 +80,7 @@
           function openCamera(){
                navigator.camera.getPicture( onSuccess, onFail, {
                     quality: 50,
-                    destinationType : Camera.DestinationType.FILE_URI,
+                    destinationType : Camera.DestinationType.NATIVE_URI,
                     sourceType : Camera.PictureSourceType.CAMERA,
                     encodingType: Camera.EncodingType.JPEG,
                     mediaType: Camera.MediaType.PICTURE,
@@ -91,7 +91,7 @@
           function openLibrary(){
                navigator.camera.getPicture( onSuccess, onFail, {
                     quality: 50,
-                    destinationType : Camera.DestinationType.FILE_URI,
+                    destinationType : Camera.DestinationType.NATIVE_URI,
                     sourceType : Camera.PictureSourceType.PHOTOLIBRARY,
                     encodingType: Camera.EncodingType.JPEG,
                     mediaType: Camera.MediaType.PICTURE,
@@ -102,7 +102,7 @@
           function openSavePh(){
                navigator.camera.getPicture( onSuccess, onFail, {
                     quality: 50,
-                    destinationType : Camera.DestinationType.FILE_URI,
+                    destinationType : Camera.DestinationType.NATIVE_URI,
                     sourceType : Camera.PictureSourceType.SAVEDPHOTOALBUM,
                     encodingType: Camera.EncodingType.JPEG,
                     mediaType: Camera.MediaType.PICTURE,
@@ -127,7 +127,7 @@
                // image.src = uriToData(imageUri);
                image.attr('src', imageUri);
                image.css({maxWidth: '100px', width: 'auto', height: 'auto'});
-               image.bind('load', function() {
+               image.on('load', function() {
                     var canvas = document.createElement("canvas");
                     canvas.width = image.width();
                     canvas.height = image.height();
@@ -136,7 +136,7 @@
                     var dataUri = canvas.toDataURL('image/png');
                     image.attr('src', 'data:image/png;base64,' + imageDataUri);
                });
-               image.bind('error', function() {
+               image.on('error', function() {
                     console.log('Couldnt convert photo to data URI');
                });
 
