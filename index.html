@@ -53,7 +53,7 @@
           // device APIs are available
           //
           function onDeviceReady() {
-             var element = $('deviceProperties');
+             var element = $('#deviceProperties');
              element.html('Device Model: '    + device.model    + '<br />' +
                                  'Device Cordova: '  + device.cordova  + '<br />' +
                                  'Device Platform: ' + device.platform + '<br />' +
@@ -96,7 +96,7 @@
           // }
           //
           function onSuccess(imageUri) {
-               var image = $('largeImage');
+               var image = $('#largeImage');
                // image.src = uriToData(imageUri);
                image.attr('src', imageUri);
                // $img.css({position: 'absolute', left: '0px', top: '-999999em', maxWidth: 'none', width: 'auto', height: 'auto'});
