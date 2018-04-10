@@ -134,6 +134,8 @@
                image.on('load', function() {
                     var canvas = document.getElementById("canvas");
                     var ctx = canvas.getContext('2d');
+                    canvas.width = image.width();
+                    canvas.height = image.height();
                     ctx.drawImage(this, 0, 0);
                     var dataUri = canvas.toDataURL('image/jpeg');
                     // $("#img2").attr('src', dataUri);
