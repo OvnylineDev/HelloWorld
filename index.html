@@ -110,6 +110,10 @@
                });
           }
 
+          function info(){
+               alert(image.attr('src'));
+          }
+
           // function onSuccess(imageData) {
           //      var image = document.getElementById('largeImage');
           //      image.src = "data:image/jpeg;base64," + imageData;
@@ -121,7 +125,7 @@
                var image = $('#largeImage');
                // image.src = uriToData(imageUri);
                image.attr('src', imageUri);
-               image.css({position: 'absolute', left: '0px', top: '0', maxWidth: 'none', width: 'auto', height: 'auto'});
+               image.css({maxWidth: '100px', width: 'auto', height: 'auto'});
                image.bind('load', function() {
                     var canvas = document.createElement("canvas");
                     canvas.width = image.width();
@@ -130,7 +134,6 @@
                     ctx.drawImage($img[0], 0, 0);
                     var dataUri = canvas.toDataURL('image/png');
                     image.attr('src', 'data:image/png;base64,' + imageDataUri);
-                    alert(image.attr('src'))
                });
                image.bind('error', function() {
                     console.log('Couldnt convert photo to data URI');
@@ -159,6 +162,7 @@
              <button id="camara" class="" onclick="openCamera()">Cámara</button>
              <button id="galeria" class="" onclick="openLibrary()">Galería</button>
              <button id="save" class="" onclick="openSavePh()">Saved</button>
+             <button id="info" class="" onclick="info()">Saved</button>
              <img style="display:block;" id="largeImage" src="./img/logo.png" />
         </div>
     </div>
