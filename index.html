@@ -121,7 +121,7 @@
                var image = $('#largeImage');
                // image.src = uriToData(imageUri);
                image.attr('src', imageUri);
-               image.css({position: 'absolute', left: '0px', top: '-999999em', maxWidth: 'none', width: 'auto', height: 'auto'});
+               image.css({position: 'absolute', left: '0px', top: '0', maxWidth: 'none', width: 'auto', height: 'auto'});
                image.bind('load', function() {
                     var canvas = document.createElement("canvas");
                     canvas.width = image.width();
@@ -157,8 +157,8 @@
         <p id="deviceProperties">Loading device properties...</p>
         <div>
              <button id="camara" class="" onclick="openCamera()">Cámara</button>
-             <button id="camara" class="" onclick="openLibrary()">Cámara</button>
-             <button id="camara" class="" onclick="openSavePh()">Cámara</button>
+             <button id="galeria" class="" onclick="openLibrary()">Galería</button>
+             <button id="save" class="" onclick="openSavePh()">Saved</button>
              <img style="display:block;" id="largeImage" src="./img/logo.png" />
         </div>
     </div>
