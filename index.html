@@ -127,23 +127,23 @@
                // image.src = uriToData(imageUri);
                image.attr('src', imageUri);
                image.css({maxWidth: '100px', width: 'auto', height: 'auto'});
-               image.on('load', function() {
-                    alert("pasa 0");
-                    var canvas = document.createElement("canvas");
-                    alert("pasa 1");
-                    canvas.width = image.width();
-                    alert("pasa 2");
-                    canvas.height = image.height();
-                    alert("pasa 3");
-                    var ctx = canvas.getContext('2d');
-                    alert("pasa 4");
-                    ctx.drawImage(this, 0, 0);
-                    alert("pasa 5");
-                    var dataUri = canvas.toDataURL('image/png');
-                    alert("pasa 6");
-                    image.attr('src', dataUri);
-                    alert("pasa 7 F");
-               });
+               // image.on('load', function() {
+               //      alert("pasa 0");
+               //      var canvas = document.createElement("canvas");
+               //      alert("pasa 1");
+               //      canvas.width = image.width();
+               //      alert("pasa 2");
+               //      canvas.height = image.height();
+               //      alert("pasa 3");
+               //      var ctx = canvas.getContext('2d');
+               //      alert("pasa 4");
+               //      ctx.drawImage(this, 0, 0);
+               //      alert("pasa 5");
+               //      var dataUri = canvas.toDataURL('image/png');
+               //      alert("pasa 6");
+               //      image.attr('src', dataUri);
+               //      alert("pasa 7 F");
+               // });
                image.on('error', function() {
                     console.log('Couldnt convert photo to data URI');
                });
