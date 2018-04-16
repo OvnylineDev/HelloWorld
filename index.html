@@ -82,7 +82,7 @@
           function openCameraL(){
                navigator.camera.getPicture( onSuccess, onFail, {
                     quality: 50,
-                    destinationType : Camera.DestinationType.FILE_URI,
+                    destinationType : Camera.DestinationType.NATIVE_URI,
                     sourceType : Camera.PictureSourceType.CAMERA,
                     encodingType: Camera.EncodingType.JPEG,
                     mediaType: Camera.MediaType.PICTURE,
@@ -93,8 +93,8 @@
           function openLibraryL(){
                navigator.camera.getPicture( onSuccess, onFail, {
                     quality: 50,
-                    destinationType : Camera.DestinationType.FILE_URI,
-                    sourceType : Camera.PictureSourceType.PHOTOLIBRARY,
+                    destinationType : Camera.DestinationType.NATIVE_URI,
+                    sourceType : Camera.PictureSourceType.SAVEDPHOTOALBUM,
                     encodingType: Camera.EncodingType.JPEG,
                     mediaType: Camera.MediaType.PICTURE,
                     saveToPhotoAlbum: true
@@ -116,7 +116,7 @@
                navigator.camera.getPicture( onSuccessData, onFail, {
                     quality: 25,
                     destinationType : Camera.DestinationType.DATA_URL,
-                    sourceType : Camera.PictureSourceType.PHOTOLIBRARY,
+                    sourceType : Camera.PictureSourceType.SAVEDPHOTOALBUM,
                     encodingType: Camera.EncodingType.JPEG,
                     mediaType: Camera.MediaType.PICTURE,
                     saveToPhotoAlbum: true
