@@ -142,9 +142,9 @@
                image.src = imageData;
                // $('#imagedata').html(imageData);
 
-               // image.click(function(event) {
-               //      image.attr('src', '');
-               // });
+               image.click(function(event) {
+                    info();
+               });
           }
 
           function onBackKeyDown() {
@@ -170,7 +170,7 @@
              <button id="camara" class="" onclick="openCamera()">Cámara</button>
              <button id="galeria" class="" onclick="openLibrary()">Galería</button>
              <button id="save" class="" onclick="openSavePh()">Saved</button>
-             <button id="capture" class="" onclick="capture()">Saved</button>
+             <!-- <button id="capture" class="" onclick="capture()">Capture</button> -->
              <img id="image" src=""/>
              <canvas id="canvas"></canvas>
              <p id="imagedata">Loading device properties...</p>
