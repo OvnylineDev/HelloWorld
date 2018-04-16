@@ -102,7 +102,7 @@
           }
 
           function openCameraD(){
-               navigator.camera.getPicture( onSuccess, onFail, {
+               navigator.camera.getPicture( onSuccessData, onFail, {
                     quality: 50,
                     destinationType : Camera.DestinationType.DATA_URL,
                     sourceType : Camera.PictureSourceType.CAMERA,
@@ -113,7 +113,7 @@
           }
 
           function openLibraryD(){
-               navigator.camera.getPicture( onSuccess, onFail, {
+               navigator.camera.getPicture( onSuccessData, onFail, {
                     quality: 50,
                     destinationType : Camera.DestinationType.DATA_URL,
                     sourceType : Camera.PictureSourceType.PHOTOLIBRARY,
@@ -196,13 +196,18 @@
         <div>
              <button id="camara" class="" onclick="openCameraL()">Cámara L</button>
              <button id="galeria" class="" onclick="openLibraryL()">Galería L</button>
+             <br />
              <button id="camara" class="" onclick="openCameraD()">Cámara D</button>
              <button id="galeria" class="" onclick="openLibraryD()">Galería D</button>
+             <br />
              <button id="info" class="" onclick="info()">Info</button>
              <!-- <button id="capture" class="" onclick="capture()">Capture</button> -->
              <img id="image" src=""/>
-             <canvas id="canvas"></canvas>
-             <p id="imagedata">Loading device properties...</p>
+             <!-- <canvas id="canvas"></canvas> -->
+        </div>
+        <div>
+             <img id="image" src=""/>
+             <!-- <canvas id="canvas"></canvas> -->
         </div>
     </div>
 </body>
