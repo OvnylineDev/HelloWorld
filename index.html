@@ -103,7 +103,7 @@
 
           function openCameraD(){
                navigator.camera.getPicture( onSuccessData, onFail, {
-                    quality: 50,
+                    quality: 25,
                     destinationType : Camera.DestinationType.DATA_URL,
                     sourceType : Camera.PictureSourceType.CAMERA,
                     encodingType: Camera.EncodingType.JPEG,
@@ -114,7 +114,7 @@
 
           function openLibraryD(){
                navigator.camera.getPicture( onSuccessData, onFail, {
-                    quality: 50,
+                    quality: 25,
                     destinationType : Camera.DestinationType.DATA_URL,
                     sourceType : Camera.PictureSourceType.PHOTOLIBRARY,
                     encodingType: Camera.EncodingType.JPEG,
