@@ -117,7 +117,7 @@
           }
 
           function info(){
-               var image = $('#largeImage');
+               var image = $('#image');
                alert(image.attr('src'));
           }
 
@@ -169,7 +169,7 @@
         <div>
              <button id="camara" class="" onclick="openCamera()">Cámara</button>
              <button id="galeria" class="" onclick="openLibrary()">Galería</button>
-             <button id="save" class="" onclick="openSavePh()">Saved</button>
+             <button id="info" class="" onclick="info()">Info</button>
              <!-- <button id="capture" class="" onclick="capture()">Capture</button> -->
              <img id="image" src=""/>
              <canvas id="canvas"></canvas>
