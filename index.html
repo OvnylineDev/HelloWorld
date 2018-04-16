@@ -48,22 +48,22 @@
           // app.initialize();
           // Wait for device API libraries to load
           //
-          document.addEventListener("deviceready", onDeviceReady, false);
-          document.addEventListener("backbutton", onBackKeyDown, false);
+          // document.addEventListener("deviceready", onDeviceReady, false);
+          // document.addEventListener("backbutton", onBackKeyDown, false);
 
 
           // device APIs are available
           //
-          function onDeviceReady() {
-             var element = $('#deviceProperties');
-             element.html('Device Model: '    + device.model    + '<br />' +
-                                 'Device Cordova: '  + device.cordova  + '<br />' +
-                                 'Device Platform: ' + device.platform + '<br />' +
-                                 'Device UUID: '     + device.uuid     + '<br />' +
-                                 'Device Version: '  + device.version  + '<br />');
-
-               // alert(device.uuid);
-          }
+          // function onDeviceReady() {
+          //    var element = $('#deviceProperties');
+          //    element.html('Device Model: '    + device.model    + '<br />' +
+          //                        'Device Cordova: '  + device.cordova  + '<br />' +
+          //                        'Device Platform: ' + device.platform + '<br />' +
+          //                        'Device UUID: '     + device.uuid     + '<br />' +
+          //                        'Device Version: '  + device.version  + '<br />');
+          //
+          //      // alert(device.uuid);
+          // }
 
           /*
           {
@@ -79,7 +79,7 @@
           };
 
            */
-          function openCamera(){
+          function openCameraL(){
                navigator.camera.getPicture( onSuccess, onFail, {
                     quality: 50,
                     destinationType : Camera.DestinationType.FILE_URI,
@@ -90,10 +90,32 @@
                });
           }
 
-          function openLibrary(){
+          function openLibraryL(){
                navigator.camera.getPicture( onSuccess, onFail, {
                     quality: 50,
                     destinationType : Camera.DestinationType.FILE_URI,
+                    sourceType : Camera.PictureSourceType.PHOTOLIBRARY,
+                    encodingType: Camera.EncodingType.JPEG,
+                    mediaType: Camera.MediaType.PICTURE,
+                    saveToPhotoAlbum: true
+               });
+          }
+
+          function openCameraD(){
+               navigator.camera.getPicture( onSuccess, onFail, {
+                    quality: 50,
+                    destinationType : Camera.DestinationType.DATA_URL,
+                    sourceType : Camera.PictureSourceType.CAMERA,
+                    encodingType: Camera.EncodingType.JPEG,
+                    mediaType: Camera.MediaType.PICTURE,
+                    saveToPhotoAlbum: true
+               });
+          }
+
+          function openLibraryD(){
+               navigator.camera.getPicture( onSuccess, onFail, {
+                    quality: 50,
+                    destinationType : Camera.DestinationType.DATA_URL,
                     sourceType : Camera.PictureSourceType.PHOTOLIBRARY,
                     encodingType: Camera.EncodingType.JPEG,
                     mediaType: Camera.MediaType.PICTURE,
@@ -112,10 +134,6 @@
                });
           }
 
-          function capture(){
-               window.location.href = "capture.html";
-          }
-
           function info(){
                var image = $('#image');
                alert(image.attr('src'));
@@ -131,20 +149,29 @@
           function onSuccess(imageData) {
                var image = document.getElementById("image");
 
-               image.onload = function() {
-                    var canvas = document.getElementById("canvas");
-                    var ctx = canvas.getContext('2d');
-                    ctx.drawImage(this, 0, 0);
-                    // var dataUri = canvas.toDataURL('image/jpeg');
-                    // $("#img2").attr('src', dataUri);
-               };
+               // image.onload = function() {
+               //      var canvas = document.getElementById("canvas");
+               //      var ctx = canvas.getContext('2d');
+               //      ctx.drawImage(this, 0, 0);
+               //      // var dataUri = canvas.toDataURL('image/jpeg');
+               //      // $("#img2").attr('src', dataUri);
+               // };
 
                image.src = imageData;
-               // $('#imagedata').html(imageData);
+          }
 
-               image.click(function(event) {
-                    info();
-               });
+          function onSuccessData(imageData) {
+               var image = document.getElementById("image");
+
+               // image.onload = function() {
+               //      var canvas = document.getElementById("canvas");
+               //      var ctx = canvas.getContext('2d');
+               //      ctx.drawImage(this, 0, 0);
+               //      // var dataUri = canvas.toDataURL('image/jpeg');
+               //      // $("#img2").attr('src', dataUri);
+               // };
+
+               image.src = "data:image/jpeg;base64," + imageData;
           }
 
           function onBackKeyDown() {
@@ -160,15 +187,17 @@
 
 <body>
     <div class="app">
-        <h1>PhoneGap</h1>
+        <!-- <h1>PhoneGap</h1>
         <div id="deviceready" class="blink">
             <p class="event listening">Connecting to Device</p>
             <p class="event received">Device is Ready</p>
         </div>
-        <p id="deviceProperties">Loading device properties...</p>
+        <p id="deviceProperties">Loading device properties...</p> -->
         <div>
-             <button id="camara" class="" onclick="openCamera()">Cámara</button>
-             <button id="galeria" class="" onclick="openLibrary()">Galería</button>
+             <button id="camara" class="" onclick="openCameraL()">Cámara L</button>
+             <button id="galeria" class="" onclick="openLibraryL()">Galería L</button>
+             <button id="camara" class="" onclick="openCameraD()">Cámara D</button>
+             <button id="galeria" class="" onclick="openLibraryD()">Galería D</button>
              <button id="info" class="" onclick="info()">Info</button>
              <!-- <button id="capture" class="" onclick="capture()">Capture</button> -->
              <img id="image" src=""/>
