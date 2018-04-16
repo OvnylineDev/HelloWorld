@@ -125,7 +125,7 @@
           // }
           //
           function onSuccess(imageData) {
-               var image = new Image();
+               var image = document.getElementById("image");
 
                image.onload = function() {
                     var canvas = document.getElementById("canvas");
@@ -138,7 +138,6 @@
                };
 
                image.src = imageData;
-               alert(imageData);
                // $('#imagedata').html(imageData);
 
                // image.click(function(event) {
@@ -169,6 +168,7 @@
              <button id="camara" class="" onclick="openCamera()">Cámara</button>
              <button id="galeria" class="" onclick="openLibrary()">Galería</button>
              <button id="save" class="" onclick="openSavePh()">Saved</button>
+             <img id="image" src=""/>
              <canvas id="canvas"></canvas>
              <p id="imagedata">Loading device properties...</p>
         </div>
