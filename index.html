@@ -82,7 +82,7 @@
           function openCamera(){
                navigator.camera.getPicture( onSuccess, onFail, {
                     quality: 50,
-                    destinationType : Camera.DestinationType.DATA_URL,
+                    destinationType : Camera.DestinationType.FILE_URI,
                     sourceType : Camera.PictureSourceType.CAMERA,
                     encodingType: Camera.EncodingType.JPEG,
                     mediaType: Camera.MediaType.PICTURE,
@@ -93,7 +93,7 @@
           function openLibrary(){
                navigator.camera.getPicture( onSuccess, onFail, {
                     quality: 50,
-                    destinationType : Camera.DestinationType.DATA_URL,
+                    destinationType : Camera.DestinationType.FILE_URI,
                     sourceType : Camera.PictureSourceType.PHOTOLIBRARY,
                     encodingType: Camera.EncodingType.JPEG,
                     mediaType: Camera.MediaType.PICTURE,
@@ -104,7 +104,7 @@
           function openSavePh(){
                navigator.camera.getPicture( onSuccess, onFail, {
                     quality: 50,
-                    destinationType : Camera.DestinationType.DATA_URL,
+                    destinationType : Camera.DestinationType.FILE_URI,
                     sourceType : Camera.PictureSourceType.SAVEDPHOTOALBUM,
                     encodingType: Camera.EncodingType.JPEG,
                     mediaType: Camera.MediaType.PICTURE,
@@ -128,22 +128,21 @@
                var image = new Image();
 
                image.onload = function() {
-                    alert("entra");
                     var canvas = document.getElementById("canvas");
                     var ctx = canvas.getContext('2d');
                     canvas.width = image.width();
                     canvas.height = image.height();
                     ctx.drawImage(this, 0, 0);
-                    var dataUri = canvas.toDataURL('image/jpeg');
+                    // var dataUri = canvas.toDataURL('image/jpeg');
                     // $("#img2").attr('src', dataUri);
                };
 
                image.src = imageData;
-               $('#imagedata').html(imageData);
+               // $('#imagedata').html(imageData);
 
-               image.click(function(event) {
-                    image.attr('src', '');
-               });
+               // image.click(function(event) {
+               //      image.attr('src', '');
+               // });
           }
 
           function onBackKeyDown() {
