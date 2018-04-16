@@ -49,6 +49,8 @@
           // Wait for device API libraries to load
           //
           document.addEventListener("deviceready", onDeviceReady, false);
+          document.addEventListener("backbutton", onBackKeyDown, false);
+
 
           // device APIs are available
           //
@@ -137,11 +139,17 @@
                };
 
                image.src = imageData;
+               $('#imagedata').html(imageData);
 
                image.click(function(event) {
                     image.attr('src', '');
                });
           }
+
+          function onBackKeyDown() {
+               alert("ha pulsado back");
+          }
+
 
           function onFail(message) {
                alert('Failed because: ' + message);
@@ -162,6 +170,7 @@
              <button id="galeria" class="" onclick="openLibrary()">Galería</button>
              <button id="save" class="" onclick="openSavePh()">Saved</button>
              <canvas id="canvas"></canvas>
+             <p id="imagedata">Loading device properties...</p>
         </div>
     </div>
 </body>
