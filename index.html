@@ -112,6 +112,10 @@
                });
           }
 
+          function capture(){
+               window.location.href = "capture.html";
+          }
+
           function info(){
                var image = $('#largeImage');
                alert(image.attr('src'));
@@ -166,6 +170,7 @@
              <button id="camara" class="" onclick="openCamera()">Cámara</button>
              <button id="galeria" class="" onclick="openLibrary()">Galería</button>
              <button id="save" class="" onclick="openSavePh()">Saved</button>
+             <button id="capture" class="" onclick="capture()">Saved</button>
              <img id="image" src=""/>
              <canvas id="canvas"></canvas>
              <p id="imagedata">Loading device properties...</p>
