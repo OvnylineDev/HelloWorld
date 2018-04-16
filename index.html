@@ -92,12 +92,8 @@
 
           function openLibraryL(){
                navigator.camera.getPicture( onSuccess, onFail, {
-                    quality: 50,
-                    destinationType : Camera.DestinationType.NATIVE_URI,
-                    sourceType : Camera.PictureSourceType.SAVEDPHOTOALBUM,
-                    encodingType: Camera.EncodingType.JPEG,
-                    mediaType: Camera.MediaType.PICTURE,
-                    saveToPhotoAlbum: true
+                    destinationType : Camera.DestinationType.FILE_URI,
+                    sourceType : Camera.PictureSourceType.SAVEDPHOTOALBUM
                });
           }
 
